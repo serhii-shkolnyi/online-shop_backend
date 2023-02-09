@@ -24,7 +24,11 @@
                 "ts": "never"
             }
         ],
-        "class-methods-use-this": ["error", { "exceptMethods": ["up", "down"] }]
+        "class-methods-use-this": "off",
+        "no-unused-vars": ["error", { "args":  "none", "varsIgnorePattern": "^[A-Z]" }],
+        "no-underscore-dangle": "off",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"]
     },
     "settings": {
         "import/resolver": {
