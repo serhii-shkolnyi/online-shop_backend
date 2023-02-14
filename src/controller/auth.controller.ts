@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 
-import { UserEntity } from '../entity';
-import { AppDataSource } from '../data-source';
+import { IUser } from '../interface';
+import { authService } from '../service';
 
 class AuthController {
-    public async createUser(req:Request, res:Response) {
-        const user = await AppDataSource.getRepository(UserEntity).save(req.body);
-        res.json(user);
+    public async createUser(req:Request, res:Response): Promise<Response<IUser>> {
+        const createdUser = await authService.createUser(req.body);
+        return res.json(createdUser);
     }
 }
 
