@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 
 import { apiConfig } from './config';
 import { AppDataSource } from './data-source';
@@ -11,6 +11,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(apiRouter);
+
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    res
+        .status(err.status || 500)
+        .json({
+            message: err.message,
+            data: err.data,
+        });
+});
 
 AppDataSource.initialize()
     .then(() => {

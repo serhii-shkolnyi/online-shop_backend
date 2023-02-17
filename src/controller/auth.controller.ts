@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 
 import { IUser } from '../interface';
-import { authService } from '../service';
+import { userService } from '../service';
 
 class AuthController {
-    public async createUser(req:Request, res:Response): Promise<Response<IUser>> {
-        const createdUser = await authService.createUser(req.body);
+    public async registration(req:Request, res:Response): Promise<Response<IUser>> {
+        const createdUser = await userService.createUser(req.body);
         return res.json(createdUser);
     }
 }
