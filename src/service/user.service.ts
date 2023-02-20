@@ -4,12 +4,7 @@ import { userRepository } from '../repository';
 
 class UserService {
     public async createUser(user: IUser): Promise<IUser> {
-        const { email, password } = user;
-
-        const candidate = await userRepository.getUserByEmail(email);
-        if (candidate) {
-            throw new Error(`polzovatel c adresom ${email} uje est`);
-        }
+        const { password } = user;
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const userToSave = { ...user, password: hashedPassword };
