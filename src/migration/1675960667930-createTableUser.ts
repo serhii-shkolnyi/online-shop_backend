@@ -21,6 +21,11 @@ export class createTableUser1675960667930 implements MigrationInterface {
                         default: "'customer'",
                     },
                     {
+                        name: 'activated',
+                        type: 'boolean',
+                        default: false,
+                    },
+                    {
                         name: 'email',
                         type: 'varchar',
                         width: 255,
@@ -29,6 +34,12 @@ export class createTableUser1675960667930 implements MigrationInterface {
                     },
                     {
                         name: 'password',
+                        type: 'varchar',
+                        width: 255,
+                        isNullable: false,
+                    },
+                    {
+                        name: 'activationLink',
                         type: 'varchar',
                         width: 255,
                         isNullable: false,
